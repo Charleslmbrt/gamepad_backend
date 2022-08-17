@@ -12,7 +12,7 @@ app.use(cors());
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&dates=2022-08-01,2022-08-31&platforms=18,1,7&name=${req.query.name}`
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&dates=2022-08-01,2022-08-31&platforms=18,1,7&search=${req.query.search}`
     );
 
     res.json(response.data);
