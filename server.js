@@ -13,7 +13,7 @@ app.get("/", async (req, res) => {
   try {
     const response = await axios.get(
       // `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}`
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1&page_size=20&search=${req.query.search}`
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1&page_size=30&search=${req.query.search}`
     );
 
     res.json(response.data);
