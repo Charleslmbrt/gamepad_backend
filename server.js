@@ -10,14 +10,15 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   try {
+    console.log(req.query);
     const response = await axios.get(
       // `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}`
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}&page=${req.query.page}&page_size=${req.query.page_size}`
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}&page=${req.query.page}&page_size=20`
     );
 
     res.json(response.data);
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 });
 
