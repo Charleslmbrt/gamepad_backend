@@ -13,9 +13,12 @@ app.get("/", async (req, res) => {
     const genre = Number(req.query.genres)
       ? req.query.genres
       : "4,10,5,2,3,7,15";
+    const platform = Number(req.query.platforms)
+      ? req.query.platforms
+      : "4,187,1,18,186,7,3,21";
     const response = await axios.get(
       // `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}`
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}&page=${req.query.page}&page_size=${req.query.page_size}&genres=${genre}`
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}&page=${req.query.page}&page_size=${req.query.page_size}&genres=${genre}&platform=${platform}`
     );
 
     res.json(response.data);
