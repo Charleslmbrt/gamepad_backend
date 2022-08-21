@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
       ? req.query.platforms
       : "4,187,1,18,186,7,3,21";
     const response = await axios.get(
-      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}&page=${req.query.page}&page_size=${req.query.page_size}&genres=${genre}&platforms=${platforms}&dates=${req.query.dates}&ordering=${req.query.ordering}&metacritic=${req.query.metacritic}`
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.query.search}&page=${req.query.page}&page_size=${req.query.page_size}&genres=${genre}&platforms=${platforms}&dates=${req.query.dates}&ordering=${req.query.ordering}`
     );
 
     res.json(response.data);
