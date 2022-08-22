@@ -26,6 +26,18 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/game/:gameId", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.rawg.io/api/games/${req.params.id}key=${process.env.API_KEY}`
+    );
+
+    res.json(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.all("*", (req, res) => {
   res.status(404).json({ error: error.message });
 });
