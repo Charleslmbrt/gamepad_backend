@@ -26,7 +26,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.get("/game/:id", async (req, res) => {
+app.get("/:id", async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`
