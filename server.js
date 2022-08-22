@@ -26,34 +26,15 @@ app.get("/", async (req, res) => {
   }
 });
 
-// app.get("/game/:id", async (req, res) => {
-//   try {
-//     const response = await axios.get(
-//       `https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`
-//     );
-
-//     res.json(response.data);
-//   } catch (error) {
-//     res.status(400).json("game route not found");
-//   }
-// });
-
 app.get("/game/:id", async (req, res) => {
-  console.log("test");
   try {
-    axios
-      .get(
-        `https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`
-      )
-      .then((response) => {
-        const home = response.data;
-        res.status(200).json(home);
-      })
-      .catch((error) => {
-        console.log("message:", error);
-      });
+    const response = await axios.get(
+      `https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`
+    );
+
+    res.json(response.data);
   } catch (error) {
-    res.json({ message: "Game route not found" });
+    res.status(400).json("game route not found");
   }
 });
 
