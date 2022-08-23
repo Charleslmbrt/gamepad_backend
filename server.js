@@ -38,6 +38,18 @@ app.get("/game/:id", async (req, res) => {
   }
 });
 
+app.get("/game/:id/game-series", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.rawg.io/api/games/${req.params.id}/game-series?key=${process.env.API_KEY}`
+    );
+
+    res.json(response.data);
+  } catch (error) {
+    res.status(400).json("game-series route not found");
+  }
+});
+
 app.all("*", (req, res) => {
   res.status(404).json({ error: error.message });
 });
