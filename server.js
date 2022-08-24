@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const axios = require("axios");
 
@@ -7,6 +8,13 @@ const axios = require("axios");
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+//se connecter à MongoDB
+mongoose.connect("mongodb://localhost/gamepaddb");
+
+//importer les routes
+const userRoutes = require("./routes/user.js");
+app.use(userRoutes);
 
 app.get("/", async (req, res) => {
   try {
@@ -51,9 +59,13 @@ app.get("/game/:id/game-series", async (req, res) => {
 });
 
 app.all("*", (req, res) => {
-  res.status(404).json({ error: error.message });
+  res.status(404).json({ error: "This route doesn't exist" });
 });
 
 app.listen(process.env.PORT, () => {
   console.log("Server has started ✌️");
 });
+
+// app.listen(4000, () => {
+//   console.log("Server has started ✌️");
+// });
