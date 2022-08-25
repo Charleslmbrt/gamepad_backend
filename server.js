@@ -10,7 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 //se connecter à MongoDB
-mongoose.connect("mongodb://localhost/gamepaddb");
+// mongoose.connect("mongodb://localhost/gamepaddb");
+mongoose.connect(process.env.MONGOOSE_KEY);
 
 //importer les routes
 const userRoutes = require("./routes/user.js");
